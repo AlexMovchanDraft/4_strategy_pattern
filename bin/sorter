@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php 
+
+use App\Sorter;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+    $ASC = 'ASC';
+    $DESC = 'DESC';
+    $intData = Array(1, 2, 3, 4);
+    $strData = Array('lemon', 'banana', 'apple', 'cherry');
+
+    $s1 = new Sorter($intData, $ASC);
+    $s2 = new Sorter($intData, $DESC);
+    
+    $s3 = new Sorter($strData, $ASC);
+    $s4 = new Sorter($strData, $DESC);
+
+    var_dump($s1->sort());
+    var_dump($s2->sort());
+
+    var_dump($s3->sort());
+    var_dump($s4->sort());
