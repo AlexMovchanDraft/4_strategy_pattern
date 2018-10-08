@@ -3,6 +3,9 @@
 namespace App;
 
 class Sorter implements SorterInterface {
+    private const ASC = 'ASC';
+    private const DESC = 'DESC';
+    
     public $data;
     public $sortingMethod = 'ASC';
 
@@ -12,7 +15,14 @@ class Sorter implements SorterInterface {
     }
 
     public function sort() {
-        $StrategySorter = new IntSorter($this->data, $this->sortingMethod);
+        if ($this->sortingMethod === self::ASC) {
+            $StrategySorter = new SorterASC($this->data);
+        } else if($this->sortingMethod === self::DESC) {
+            $StrategySorter = new SorterDESC($this->data);
+        } else {
+            echo 'Wrong sorting method';
+            return false;
+        }
  
         return $StrategySorter->sort();
     }
